@@ -62,7 +62,6 @@ Olimpia Milano - Cantù | 55-60 */
 	for ($i = 0; $i < $arr_length ; $i++) {
 		$partita = $arr_partite[$i];
 
-		// metodo 1
 		echo "<div>{$partita[0]['nome']} - {$partita[1]['nome']} | {$partita[0]['punteggio']}-{$partita[1]['punteggio']}</div>";
     }?>
 
