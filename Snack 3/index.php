@@ -44,25 +44,55 @@ $arr_posts = [
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack 3</title>
 </head>
+
 <body>
-    
-<?php
 
-	$posts_length = count($arr_posts);
-	for ($i = 0; $i < $posts_length ; $i++) {
-		$arr_posts = $posts[$i];
+    <?php
 
-		echo "<div>{$posts[$i]['title']} {$posts[$i]['author']} {$posts[$i]['text']}</div>";
+    // $posts_length = count($arr_posts);
+    // for ($i = 0; $i < $posts_length; $i++) {
+    //     $arr_posts = $posts[$i];
+
+    //     echo "<div>{$posts[$i]['title']} {$posts[$i]['author']} {$posts[$i]['text']}</div>";
+    // }
+
+
+    // Estraiamo le chiavi numeriche dell'array
+    $keys_arr_posts = array_keys($arr_posts);
+
+    $n_posts = count($arr_posts);
+
+    for ($i = 0; $i < $n_posts; $i++) {
+        $key = $keys_arr_posts[$i] ?>
+    <h1><?= $key ?><h1> <?php
+
+    $posts_of_date = $posts[$key];
+    $n_posts_of_date = count($posts_of_date);
+
+    for ($j = 0; $j < $n_posts_of_date; $j++) { 
+    $post = $posts_of_date[$j]; ?>
+
+    <div>
+    <h2><?= $post['title'] ?> </h2>
+    <h3><?= $post['author'] ?> </h3>
+    <p><?= $post['text'] ?> </p>
+    </div> <?php
+
     }
 
-    
+    }
+
+
+
     ?>
 
 </body>
+
 </html>
