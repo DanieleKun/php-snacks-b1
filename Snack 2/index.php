@@ -2,22 +2,20 @@
 /* Snack 2
 Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato” */
 
-$name = $_GET['name'];
-$mail = $_GET['mail'];
-$age = $_GET['age'];
+$name = $_GET['name'] ?? '';
+$mail = $_GET['mail'] ?? '';
+$age = $_GET['age'] ?? '';
+
 
 // Check name
-if (isset($_GET['name'])){
 if (strlen($name) > 3) {
     $message = "<p><strong>Nome:</strong> $name</p>";
 } else {
     $message = "Il nome inserito deve essere maggiore di 3 caratteri";
 }
-}
+
 
 // Check email
-if (isset($_GET['mail'])) {
-
 $position_chiocciola = strpos($mail, '@');
 
 if ($position_chiocciola != false && strpos($mail, '.',            $position_chiocciola) != false) {
@@ -25,16 +23,24 @@ if ($position_chiocciola != false && strpos($mail, '.',            $position_chi
 } else {
     $result = "<p>E-mail non valida</p>";
 }
-}
+
 
 // Check Age
-if(isset($_GET['age'])){
-if (is_numeric($_GET['age'])) {
+if (is_numeric($age)) {
     $number = "<p><strong>Age:</strong> $age</p>";
 } else {
     $number = "Non hai inserito numeri";
 }
+
+
+// check all
+if(strlen($name) > 3 && $position_chiocciola && strpos($mail, '.', $position_chiocciola) && is_numeric($age))
+{
+    echo 'accesso riuscito';
+} else {
+    echo 'accesso negato';
 }
+
 
 ?>
 
